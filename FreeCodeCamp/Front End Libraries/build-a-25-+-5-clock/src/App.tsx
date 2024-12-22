@@ -1,12 +1,7 @@
-import './App.css'
+import PomodoroAlarm from "./components/PomodoroAlarm";
 
 function App() {
-
-  return (
-    <div>
-      I will code later
-    </div>
-  )
+  return <PomodoroAlarm />;
 }
 
-export default App
+export default App;
