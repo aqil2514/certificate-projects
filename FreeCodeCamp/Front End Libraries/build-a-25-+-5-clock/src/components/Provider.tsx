@@ -2,6 +2,7 @@ import React, {
   createContext,
   SetStateAction,
   useContext,
+  useRef,
   useState,
 } from "react";
 
@@ -16,6 +17,7 @@ interface PomodoroProviderContext {
   setTimeLeft: React.Dispatch<SetStateAction<number>>;
   isRunning: boolean;
   setIsRunning: React.Dispatch<SetStateAction<boolean>>;
+  audioRef: React.MutableRefObject<HTMLAudioElement | null>
 }
 
 const PomodoroContext = createContext<PomodoroProviderContext>(
@@ -31,8 +33,10 @@ export default function PomodoroProvider({
   const [sessionLength, setSessionLength] = useState(25);
   const [status, setStatus] =
     useState<PomodoroProviderContext["status"]>("Session");
-  const [timeLeft, setTimeLeft] = useState(sessionLength * 60); // Waktu dalam detik
-  const [isRunning, setIsRunning] = useState(false); // Timer berjalan atau tidak
+  const [timeLeft, setTimeLeft] = useState(sessionLength * 60);
+  const [isRunning, setIsRunning] = useState(false);
+    const audioRef = useRef<HTMLAudioElement | null>(null)
+  
 
   const value: PomodoroProviderContext = {
     breakLength,
@@ -45,9 +49,11 @@ export default function PomodoroProvider({
     setIsRunning,
     setTimeLeft,
     timeLeft,
+    audioRef
   };
   return (
     <PomodoroContext.Provider value={value}>
+      <audio src="src\assets\beep.mp3" ref={audioRef} id="beep"></audio>
       {children}
     </PomodoroContext.Provider>
   );

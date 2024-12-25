@@ -21,8 +21,10 @@ export default function Label({
         {text} Label
       </h3>
       <div className="flex justify-center gap-4">
-        <button id={`${id}-decrement`} // eslint-disable-next-line react-hooks/rules-of-hooks
-          onClick={() => useDecreaseValue(defaultValue, useAction)}>
+        <button
+          id={`${id}-decrement`} // eslint-disable-next-line react-hooks/rules-of-hooks
+          onClick={() => useDecreaseValue(defaultValue, useAction)}
+        >
           <ArrowDown />
         </button>
         <div id={`${id}-length`}>{defaultValue}</div>

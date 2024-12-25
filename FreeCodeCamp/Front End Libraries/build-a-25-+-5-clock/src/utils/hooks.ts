@@ -2,8 +2,13 @@ import React, { SetStateAction } from "react";
 
 export const useIncreaseValue = (
     length: number,
-    useLength: React.Dispatch<SetStateAction<number>>
+    useLength: React.Dispatch<SetStateAction<number>>,
+    delta: number = 1
   ) => {
+    const newValue = length + delta;
+    if(newValue > 60) return;
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     return useLength(length + 1);
   };
   
