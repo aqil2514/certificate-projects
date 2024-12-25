@@ -53,7 +53,7 @@ export default function PomodoroProvider({
   };
   return (
     <PomodoroContext.Provider value={value}>
-      <audio src="src\assets\beep.mp3" ref={audioRef} id="beep"></audio>
+      <audio src="\beep.mp3" ref={audioRef} id="beep"></audio>
       {children}
     </PomodoroContext.Provider>
   );
